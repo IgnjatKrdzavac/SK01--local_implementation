@@ -15,7 +15,7 @@ public class LocalCreate extends Create {
 
     @Override
     public void createDir(String path) throws Exception {
-            String name = "Directory " + indexDir;
+            String name = "Directory" + indexDir;
             indexDir++;
 
             path =  StorageInfo.getInstance().getConfig().getPath() + path;
@@ -33,7 +33,7 @@ public class LocalCreate extends Create {
     @Override
     public void createDirs(String path, int velicinaListe) throws Exception {
 
-        String name = "Directory ";
+        String name = "Directory";
         path =  StorageInfo.getInstance().getConfig().getPath() + path;
 
         while(velicinaListe > 0){
@@ -49,7 +49,7 @@ public class LocalCreate extends Create {
 
     @Override
     public void createFiles(String path) throws Exception {
-        String name = "File " + indexFile;
+        String name = "File" + indexFile;
         indexFile++;
 
         path =  StorageInfo.getInstance().getConfig().getPath() + path;
@@ -76,7 +76,7 @@ public class LocalCreate extends Create {
     @Override
     public void createFiles(String path, int velicinaListe) throws Exception {
 
-        String name = "File ";
+        String name = "File";
         path =  StorageInfo.getInstance().getConfig().getPath() + path;
 
         while(velicinaListe > 0){
