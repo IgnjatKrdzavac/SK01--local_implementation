@@ -62,13 +62,13 @@ public class LocalCreate extends Create {
     public void createFiles(String path, String name) throws Exception {
         String extension = name.split("\\.")[1];
         path =  StorageInfo.getInstance().getConfig().getPath() + path;
-        if (StorageInfo.getInstance().getConfig().getUnsuportedFiles().contains(extension)) {
+       if (StorageInfo.getInstance().getConfig().getUnsuportedFiles().contains(extension)) {
             throw new ConfigException("Extension not supported");
         }
 
-        if (!checkNumOfFiles()) {
+       /* if (!checkNumOfFiles()) {
             throw new ConfigException("File number exceeded");
-        }
+        }*/
 
         makeFile(path,name);
     }
@@ -115,6 +115,9 @@ public class LocalCreate extends Create {
     }
 
     public boolean checkNumOfFiles() {
+        if (StorageInfo.getInstance().getConfig().getNumberOfFiles().equals("pvr")) {
+            return true;
+        }
 
         return countFiles(StorageInfo.getInstance().getConfig().getPath(), 0) + 1 <= Integer.parseInt(StorageInfo.getInstance().getConfig().getNumberOfFiles());
     }

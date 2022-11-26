@@ -24,7 +24,7 @@ public class LocalStorage extends Storage {
         Map<String, Object> configMap = new HashMap<>();
         configMap.put("path", path);
         configMap.put("maxSize", (maxSize != null) ? maxSize : StorageInfo.getInstance().getConfig().getMaxSize());
-        configMap.put("maxNumOfFiles", (maxNumOfFiles != null) ? maxNumOfFiles : StorageInfo.getInstance().getConfig().getNumberOfFiles());
+        configMap.put("numberOfFiles", (maxNumOfFiles != null) ? maxNumOfFiles : StorageInfo.getInstance().getConfig().getNumberOfFiles());
         configMap.put("unsupportedFiles", (unsupportedFiles != null) ? unsupportedFiles : StorageInfo.getInstance().getConfig().getUnsuportedFiles());
 
         try {
@@ -64,8 +64,8 @@ public class LocalStorage extends Storage {
     private void initConfig(File configFile, String path) {
         Map<String, Object> configMap = new HashMap<>();
         configMap.put("path", path);
-        configMap.put("maxSize", "undefined");
-        configMap.put("maxNumOfFiles", "undefined");
+        configMap.put("maxSize", "pvr");
+        configMap.put("numberOfFiles", "pvr");
         configMap.put("unsupportedFiles", null);
 
         try {
