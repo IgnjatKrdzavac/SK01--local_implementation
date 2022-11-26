@@ -41,7 +41,8 @@ public class LocalOperations extends Operations {
 
     @Override
     public void deleteAll(String path) throws Exception {
-
+        File dir = new File(path);
+        FileUtils.cleanDirectory(dir);
     }
 
     @Override
