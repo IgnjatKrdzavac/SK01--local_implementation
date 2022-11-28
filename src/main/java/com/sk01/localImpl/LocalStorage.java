@@ -2,13 +2,11 @@ package com.sk01.localImpl;
 
 import com.google.gson.Gson;
 import com.sk01.storage.Storage;
+import com.sk01.utils.Config;
 import com.sk01.utils.StorageInfo;
 import org.apache.commons.io.FileUtils;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
+import java.io.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -52,6 +50,8 @@ public class LocalStorage extends Storage {
 
                 FileUtils.touch(configFile);  //napravimo config.json u skladistu
 
+                readConfig(getConfig(path + "/" + storageName));
+
             }
             catch (IOException e) {
                 e.printStackTrace();
@@ -72,6 +72,23 @@ public class LocalStorage extends Storage {
             Writer writer = new FileWriter(configFile);
             new Gson().toJson(configMap, writer);
             writer.close();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+    private void readConfig(File configFile) throws Exception{
+        Gson gson = new Gson();
+
+        try {
+            Reader reader = new FileReader(configFile);
+            Config config = gson.fromJson(reader, Config.class);
+
+            StorageInfo.getInstance().setConfig(config);
+            reader.close();
         }
         catch (IOException e) {
             e.printStackTrace();
